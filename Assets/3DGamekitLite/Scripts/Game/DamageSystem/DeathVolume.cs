@@ -7,7 +7,7 @@ namespace Gamekit3D
     [RequireComponent(typeof(Collider))]
     public class DeathVolume : MonoBehaviour
     {
-        public new GameObject audio;
+        public new AudioSource audio;
 
 
         void OnTriggerEnter(Collider other)
@@ -20,6 +20,8 @@ namespace Gamekit3D
             if (audio != null)
             {
                 audio.transform.position = other.transform.position;
+                if (!audio.isPlaying)
+                    audio.Play();
             }
         }
 

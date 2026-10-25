@@ -19,7 +19,7 @@ namespace Gamekit3D.GameCommands
         [Tooltip("How many seconds must pass before the command is sent again.")]
         public float coolDown = 1;
         [Tooltip("If not null, this audio source will be played when the command is sent.")]
-        public GameObject onSendAudio;
+        public AudioSource onSendAudio;
         [Tooltip("If onSendAudio is not null, it will play after this time has passed.")]
         public float audioDelay;
 
@@ -42,7 +42,7 @@ namespace Gamekit3D.GameCommands
             isTriggered = true;
             lastSendTime = Time.time;
             interactiveObject.Receive(interactionType);
-            //if (onSendAudio) onSendAudio.PlayDelayed(audioDelay);
+            if (onSendAudio) onSendAudio.PlayDelayed(audioDelay);
         }
 
         protected virtual void Reset()
