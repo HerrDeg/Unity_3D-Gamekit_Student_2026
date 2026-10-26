@@ -8,7 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3DGamekitLite/Scenes/ExampleScene.unity
     guid: 12dd7bb27c47ea1458c8d4ecd98af2cc
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/3DGamekitLite/Scenes/Level 1.unity
+    guid: dac32e2465d28334abd01fb99185ddfd
+  - enabled: 1
+    path: Assets/3DGamekitLite/Scenes/Level 2.unity
+    guid: cf3cfe34188b69d4ba396ab3d415117f
+  - enabled: 1
+    path: Assets/3DGamekitLite/Scenes/Level 3.unity
+    guid: 00605a2114610a54586a6428ecdfa41f
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

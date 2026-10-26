@@ -43,7 +43,9 @@ namespace Gamekit3D
 
         public InventoryEvent[] inventoryEvents;
 
-        HashSet<string> inventoryItems = new HashSet<string>();
+        //HashSet<string> inventoryItems = new HashSet<string>();
+        private static HashSet<string> inventoryItems 
+            = new HashSet<string>();
 
         public void AddItem(string key)
         {
@@ -52,6 +54,7 @@ namespace Gamekit3D
                 var ev = GetInventoryEvent(key);
                 if (ev != null) ev.OnAdd.Invoke();
                 inventoryItems.Add(key);
+                Debug.Log("Inventory now contains " + inventoryItems.Count + " unique items.");
             }
         }
 

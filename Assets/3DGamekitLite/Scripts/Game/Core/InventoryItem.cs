@@ -36,7 +36,7 @@ namespace Gamekit3D
             dataSettings = new DataSettings();
         }
 
-        void OnTriggerEnter(Collider other)
+        /*void OnTriggerEnter(Collider other)
         {
             if (layers.Contains(other.gameObject))
             {
@@ -51,6 +51,43 @@ namespace Gamekit3D
                 if (clip) AudioSource.PlayClipAtPoint(clip, transform.position);
 
             }
+        }*/
+        
+        void OnTriggerEnter(Collider other)
+        {
+            if (!layers.Contains(other.gameObject))
+                return;
+
+            Debug.Log("InventoryItem: Triggered by " + other.name);
+
+            var ic = other.GetComponent<InventoryController>();
+
+            if (ic == null)
+            {
+                Debug.LogError(
+                    "InventoryItem: No InventoryController found on " +
+                    other.name
+                );
+                return;
+            }
+
+            Debug.Log("Adding inventory key: " + inventoryKey);
+
+            ic.AddItem(inventoryKey);
+
+            Debug.Log(
+                "Key added. HasItem result: " +
+                ic.HasItem(inventoryKey)
+            );
+
+            if (disableOnEnter)
+            {
+                gameObject.SetActive(false);
+                Save();
+            }
+
+            if (clip)
+                AudioSource.PlayClipAtPoint(clip, transform.position);
         }
 
         public void Save()

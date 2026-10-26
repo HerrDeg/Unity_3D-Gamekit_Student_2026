@@ -1,0 +1,123 @@
+
+using System;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace Gamekit3D
+{
+    public class HubDoor : MonoBehaviour
+    {
+        [Header("Inventory Requirements")]
+        public string[] requiredInventoryItemKeys;
+        public InventoryController characterInventory;
+
+        [Header("Door Visuals")]
+        public Sprite[] unlockStateSprites;
+        public UnityEvent onUnlocked;
+
+        private SpriteRenderer spriteRenderer;
+        private bool isUnlocked;
+
+        private void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void Start()
+        {
+            if (characterInventory == null)
+            {
+                characterInventory =
+                    FindFirstObjectByType<InventoryController>();
+            }
+
+            CheckInventory();
+        }
+
+        private void Update()
+        {
+            CheckInventory();
+        }
+
+        /*public void CheckInventory()
+        {
+            if (characterInventory == null)
+                return;
+
+            int keysCollected = 0;
+
+            foreach (string key in requiredInventoryItemKeys)
+            {
+                if (characterInventory.HasItem(key))
+                    keysCollected++;
+            }
+
+            if (unlockStateSprites != null &&
+                unlockStateSprites.Length > 0 &&
+                spriteRenderer != null)
+            {
+                int spriteIndex = Mathf.Clamp(
+                    keysCollected - 1,
+                    -1,
+                    unlockStateSprites.Length - 1
+                );
+
+                if (keysCollected > 0)
+                    spriteRenderer.sprite = unlockStateSprites[spriteIndex];
+            }
+
+            if (keysCollected >= requiredInventoryItemKeys.Length)
+            {
+                UnlockDoor();
+            }
+        }
+*/
+        
+        public void CheckInventory()
+        {
+            if (characterInventory == null)
+            {
+                characterInventory =
+                    FindObjectOfType<InventoryController>();
+            }
+
+            if (characterInventory == null)
+            {
+                Debug.LogWarning("HubDoor: No InventoryController found!");
+                return;
+            }
+
+            int keysCollected = 0;
+
+            foreach (string key in requiredInventoryItemKeys)
+            {
+                bool hasKey = characterInventory.HasItem(key);
+
+                Debug.Log("HubDoor checking key: " + key +
+                          " | Has key: " + hasKey);
+
+                if (hasKey)
+                    keysCollected++;
+            }
+
+            Debug.Log("HubDoor: " + keysCollected + " / " +
+                      requiredInventoryItemKeys.Length + " keys collected.");
+
+            if (keysCollected >= requiredInventoryItemKeys.Length)
+            {
+                UnlockDoor();
+            }
+        }
+
+        private void UnlockDoor()
+        {
+            if (isUnlocked)
+                return;
+
+            isUnlocked = true;
+            onUnlocked?.Invoke();
+
+            Debug.Log("Boss door unlocked!");
+        }
+    }
+}
