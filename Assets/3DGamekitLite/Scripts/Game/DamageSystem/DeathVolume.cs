@@ -23,6 +23,14 @@ namespace Gamekit3D
                 if (!audio.isPlaying)
                     audio.Play();
             }
+            
+            //Checks if the GameObject is an enemy and kills it!
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                Debug.Log("Entered deathvolume: " + other.name);
+                var dam = other.GetComponent<Damageable>();
+                dam.OnDeath.Invoke();
+            }
         }
 
         void Reset()

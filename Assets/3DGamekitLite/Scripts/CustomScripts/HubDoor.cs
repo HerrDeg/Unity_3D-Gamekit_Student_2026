@@ -39,40 +39,6 @@ namespace Gamekit3D
             CheckInventory();
         }
 
-        /*public void CheckInventory()
-        {
-            if (characterInventory == null)
-                return;
-
-            int keysCollected = 0;
-
-            foreach (string key in requiredInventoryItemKeys)
-            {
-                if (characterInventory.HasItem(key))
-                    keysCollected++;
-            }
-
-            if (unlockStateSprites != null &&
-                unlockStateSprites.Length > 0 &&
-                spriteRenderer != null)
-            {
-                int spriteIndex = Mathf.Clamp(
-                    keysCollected - 1,
-                    -1,
-                    unlockStateSprites.Length - 1
-                );
-
-                if (keysCollected > 0)
-                    spriteRenderer.sprite = unlockStateSprites[spriteIndex];
-            }
-
-            if (keysCollected >= requiredInventoryItemKeys.Length)
-            {
-                UnlockDoor();
-            }
-        }
-*/
-        
         public void CheckInventory()
         {
             if (characterInventory == null)

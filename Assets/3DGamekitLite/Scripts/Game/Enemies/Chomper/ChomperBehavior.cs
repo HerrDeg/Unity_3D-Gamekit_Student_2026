@@ -260,6 +260,22 @@ namespace Gamekit3D
 
             controller.animator.SetTrigger(hashHit);
         }
+        
+        public void DeathByAcid()
+        {
+            // Create the damage message required by SpitterBehaviour.Death().
+            Damageable.DamageMessage msg = new Damageable.DamageMessage
+            {
+                damager = this,
+                amount = 999,
+                damageSource = transform.position,
+                direction = (transform.position - transform.position).normalized,
+                throwing = false,
+                stopCamera = false
+            };
+
+            Death(msg);
+        }
 
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
