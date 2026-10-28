@@ -86,10 +86,10 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Edge: 4.9
-    - _Fade: 10.05
-    - _Fog: 22.6
+    - _Fade: 46.22
+    - _Fog: 4.44
     - _GlossMapScale: 1
-    - _Glossiness: 0.853
+    - _Glossiness: 1
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -110,8 +110,8 @@ Material:
     - _vertScale: 0.1
     m_Colors:
     - _Color: {r: 0, g: 0.07809329, b: 0.24528301, a: 1}
-    - _Color1: {r: 1, g: 0.9997711, b: 0, a: 1}
-    - _Color2: {r: 0, g: 0, b: 0, a: 1}
+    - _Color1: {r: 0.6930369, g: 1, b: 0, a: 1}
+    - _Color2: {r: 0, g: 0, b: 0, a: 0.99215686}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _vertSpeed: {r: 100, g: 100, b: 10, a: 0}
   m_BuildTextureStacks: []
