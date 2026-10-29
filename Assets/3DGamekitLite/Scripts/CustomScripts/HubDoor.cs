@@ -27,24 +27,17 @@ namespace Gamekit3D
         {
             if (characterInventory == null)
             {
-                characterInventory =
-                    FindFirstObjectByType<InventoryController>();
+                characterInventory = FindFirstObjectByType<InventoryController>();
             }
 
             CheckInventory();
         }
-
-        private void Update()
-        {
-            //CheckInventory();
-        }
-
-        public void CheckInventory()
+        
+        private void CheckInventory()
         {
             if (characterInventory == null)
             {
-                characterInventory =
-                    FindObjectOfType<InventoryController>();
+                characterInventory = FindObjectOfType<InventoryController>();
             }
 
             if (characterInventory == null)

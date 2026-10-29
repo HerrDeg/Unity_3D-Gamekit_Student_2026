@@ -7,6 +7,7 @@ public class CameraReset : MonoBehaviour
 
     private void Start()
     {
+        //If there is no freeLookCamera, get the component from the specified object
         if (freeLookCamera == null)
         {
             GameObject cameraObject = GameObject.Find("KeyboardAndMouseFreeLookRig");
@@ -22,13 +23,13 @@ public class CameraReset : MonoBehaviour
     {
         if (freeLookCamera != null)
         {
-            // Get the player's facing direction in degrees
+            // Get the TransitionDestination direction in degrees
             float playerFacingAngle = transform.eulerAngles.y;
 
             // Set the camera's horizontal axis to match
             freeLookCamera.m_XAxis.Value = playerFacingAngle;
 
-            Debug.Log("Camera reset to player facing direction!");
+            //Debug.Log("Camera reset");
         }
         else
         {
