@@ -8,7 +8,7 @@ namespace Gamekit3D
 {
 //this assure it's runned before any behaviour that may use it, as the animator need to be fecthed
     [DefaultExecutionOrder(-1)]
-    [RequireComponent(typeof(NavMeshAgent))]
+    //[RequireComponent(typeof(NavMeshAgent))]
     public class EnemyController : MonoBehaviour
     {
         public bool interpolateTurning = false;
@@ -113,7 +113,7 @@ namespace Gamekit3D
         // used to disable position being set by the navmesh agent, for case where we want the animation to move the enemy instead (e.g. Chomper attack)
         public void SetFollowNavmeshAgent(bool follow)
         {
-            if (!follow && m_NavMeshAgent.enabled)
+            if (!follow && m_NavMeshAgent.isActiveAndEnabled && m_NavMeshAgent.isOnNavMesh)
             {
                 m_NavMeshAgent.ResetPath();
             }
@@ -158,7 +158,14 @@ namespace Gamekit3D
 
         public bool SetTarget(Vector3 position)
         {
-            return m_NavMeshAgent.SetDestination(position);
+            if (m_NavMeshAgent != null && m_NavMeshAgent.isActiveAndEnabled && m_NavMeshAgent.isOnNavMesh)
+            {
+               return m_NavMeshAgent.SetDestination(position); 
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

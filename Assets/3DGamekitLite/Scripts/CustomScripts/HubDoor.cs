@@ -36,7 +36,7 @@ namespace Gamekit3D
 
         private void Update()
         {
-            CheckInventory();
+            //CheckInventory();
         }
 
         public void CheckInventory()
@@ -59,15 +59,13 @@ namespace Gamekit3D
             {
                 bool hasKey = characterInventory.HasItem(key);
 
-                Debug.Log("HubDoor checking key: " + key +
-                          " | Has key: " + hasKey);
+                //Debug.Log("HubDoor checking key: " + key + " | Has key: " + hasKey);
 
                 if (hasKey)
                     keysCollected++;
             }
 
-            Debug.Log("HubDoor: " + keysCollected + " / " +
-                      requiredInventoryItemKeys.Length + " keys collected.");
+            //Debug.Log("HubDoor: " + keysCollected + " / " + requiredInventoryItemKeys.Length + " keys collected.");
 
             if (keysCollected >= requiredInventoryItemKeys.Length)
             {
